@@ -1,0 +1,4 @@
+gradio>=5.29,<6
+openai>=1.66
+python-dotenv>=1.0
+Pillow>=10.0
