@@ -48,7 +48,6 @@ API 키 없이 화면만 확인하려면 같은 폴더에 `.env` 파일을 만�
 python -m venv .venv
 # macOS/Linux: source .venv/bin/activate   /   Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-cp .env.example .env      # Windows: copy .env.example .env
 # app.py 상단 OPENAI_API_KEY = "" 안에 본인의 키 입력
 # .env 는 모델·호출 제한·로그인 설정용 (API 키는 읽지 않음)
 ```
@@ -81,7 +80,7 @@ python app.py --share
 
 > ⚠️ 링크를 아는 누구나 접속할 수 있고 **내 API 키로 비용이 발생**합니다. `.env`에 `ECOSORT_PASSWORD=비밀번호`를 넣으면 로그인(아이디 `ecosort`)이 요구되고, 호출 제한도 함께 적용됩니다.
 
-### 방법 B. Cloudflare Tunnel / ngrok (고정 HTTPS 주소)
+### 방법 B. Cloudflare Tunnel / ngrok (다른 HTTPS 연결 방법)
 ```bash
 python app.py                      # http://localhost:7860
 cloudflared tunnel --url http://localhost:7860   # 또는: ngrok http 7860
@@ -127,10 +126,10 @@ python app.py --ssl-cert certs/cert.pem --ssl-key certs/key.pem
 
 ## 5. 구조
 ```
-app.py            Gradio UI, HTTPS 실행 옵션
-core.py           흑백 해시+RGB 색상 비교, 호출 제한, Responses API 호출, 분리배출 가이드/렌더링
-test_core.py      로직 테스트 (ECOSORT_MOCK=1 python test_core.py)
-requirements.txt  .env.example  README.md
+app.py            화면 및 실행 코드
+core.py           이미지 분석 및 분리배출 안내
+requirements.txt  설치 패키지 목록
+README.md         설치·사용 설명
 ```
 
 ## 6. 한계 (MVP)
