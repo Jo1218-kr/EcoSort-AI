@@ -7,6 +7,41 @@
 - **자동 인식**: 흑백 프레임 해시와 축소 RGB 색상 차이로 움직임을 감지 → 물건이 1~2초 고정되면 자동 호출 → 같은 장면은 재호출 안 함
 - **API 호출 제한**: 세션별 최소 간격 · 전체 합산 간격 · 세션 최대 호출 수 · 일일 한도. 자동 스캔과 사진 탭은 호출 예산을 공유하며, 초기화 버튼은 호출 횟수와 대기 시간을 유지합니다.
 
+## 빠른 시작 — Windows / VS Code
+
+1. Python을 설치합니다. 설치할 때 `Add python.exe to PATH`를 체크합니다.
+2. GitHub의 **Code → Download ZIP**으로 내려받고 압축을 풉니다.
+3. VS Code에서 `app.py`가 들어 있는 폴더를 엽니다.
+4. **터미널 → 새 터미널**을 열고 패키지를 설치합니다.
+
+   ```powershell
+   python -m pip install -r requirements.txt
+   ```
+
+5. `app.py` 상단의 다음 따옴표 안에 자신의 OpenAI API 키를 입력하고 저장합니다.
+
+   ```python
+   OPENAI_API_KEY = ""
+   ```
+
+   실제 키를 넣은 파일은 GitHub에 다시 올리지 마세요.
+   API 이용에는 별도 사용 요금이 발생할 수 있습니다.
+
+6. 터미널에서 실행합니다.
+
+   ```powershell
+   python app.py --share
+   ```
+
+7. `Running on public URL` 옆의 HTTPS 주소를 휴대폰에서 엽니다.
+8. 먼저 사진 업로드로 분석을 확인한 뒤 자동 스캔을 사용합니다.
+
+PC와 실행 중인 터미널을 유지해야 합니다.
+휴대폰에서는 `localhost`나 `0.0.0.0` 대신 공개 HTTPS 주소로 접속하세요.
+
+API 키 없이 화면만 확인하려면 같은 폴더에 `.env` 파일을 만들고
+`ECOSORT_MOCK=1`을 입력한 뒤 실행하세요.
+이 모드는 실제 인식 대신 고정된 페트병 예제를 표시합니다.
 ## 1. 설치
 
 ```bash
